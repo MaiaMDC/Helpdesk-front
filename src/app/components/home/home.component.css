@@ -1,0 +1,12 @@
+.card {
+    width: 90%;
+    margin: auto;
+    background-color: rgb(235, 235, 235);
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
