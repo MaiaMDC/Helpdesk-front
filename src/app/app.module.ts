@@ -75,7 +75,7 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
       progressBar: true
     })
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

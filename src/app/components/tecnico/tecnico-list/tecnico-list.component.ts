@@ -14,8 +14,11 @@ export class TecnicoListComponent implements OnInit {
 
   ELEMENT_DATA: Tecnico[] = []
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
+
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   
   constructor(
     private service: TecnicoService
@@ -25,16 +28,10 @@ export class TecnicoListComponent implements OnInit {
     this.findAll();
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
-
   findAll(){
     this.service.findAll().subscribe(resposta => {
       this.ELEMENT_DATA = resposta
-      this.dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
+      this.dataSource = new MatTableDataSource<Tecnico>(resposta);
     })
   }
 
